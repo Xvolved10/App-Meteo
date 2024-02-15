@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  /* gap: 30px; */
+  margin: 20px;
+}
+
+.div-nav-left {
+  float: left;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+
+.div-nav-right {
+  float: right;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+
+/* Pour éviter que le contenu suivant la navigation ne s'aligne pas correctement */
+nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* .div-nav-right{
+    flex-direction: row;
+    align-items: flex-end;
+} */
+/* .img-thermo{
+width: 64px;
+height: 64px;
+} */
+
+.title-thermo {
+  color: #2c8dff;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.input-city {
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.search-button {
+  background-color: #2c8dff;
+  border-radius: 20%;
+  padding: 10px;
+}
+
+main{
+  margin: 200px 0px 0px 200px;
+  display: flex;
+  /* margin-right: 0; */
+  justify-content: space-evenly;
+}
+#search-results{
+  gap: 32px;
+  border-radius: 10px;
+  /* padding: 24px; */
+  width: 219px;
+  height: 425px;
+  text-align: center;
+}
+
+#search-results-visible{
+background-color: #2c8dff;
+color: white;
+}
+
+#search-message{
+  color: #2c8dff;
+  font-size: 20px;
+  width: 287px;
+}
+
+#city-name-date{
+  font-size: 24px;
+}
+
+#map{
+  width: 642px;
+  height: 425px;
+}
+footer h3{
+  text-align: center;
+  margin-top: 150px;
+  color: #777777;
+  font-weight: 400;
+  font-size: 20;
+}

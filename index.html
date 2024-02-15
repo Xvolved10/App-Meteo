@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="div-nav-left">
+          <img src="./assets/img/thermo.png" alt="" class="img-thermo" />
+          <h1 class="title-thermo">Météo App</h1>
+        </div>
+        <div class="div-nav-right">
+          <input
+            type="text"
+            placeholder="Rechercher une ville"
+            class="input-city"
+            id="city-input"
+            list="city-suggestions"
+          />
+          <datalist id="city-suggestions"></datalist>
+          <button class="search-button" onclick="searchAndDisplay()">
+            <img src="./assets/img/Search.png" alt="" />
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="search-results">
+        <p id="search-message">
+          Pour afficher la météo d’une ville, rechercher la grâce au champ de
+          recherche !
+        </p>
+      </section>
+      <section id="map"></section>
+    </main>
+<footer>
+  <div class="copyright">
+    <h3>@ Debrie Maxime | 2024 Tous droits réservés</h3>
+  </div>
+</footer>
+  </body>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script src="script.js"></script>
+</html>
