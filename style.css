@@ -60,13 +60,14 @@ height: 64px;
   padding: 10px;
 }
 
-main{
+main {
   margin: 200px 0px 0px 200px;
   display: flex;
   /* margin-right: 0; */
   justify-content: space-evenly;
 }
-#search-results{
+
+#search-results {
   gap: 32px;
   border-radius: 10px;
   /* padding: 24px; */
@@ -75,29 +76,81 @@ main{
   text-align: center;
 }
 
-#search-results-visible{
-background-color: #2c8dff;
-color: white;
-}
 
-#search-message{
-  color: #2c8dff;
+
+#search-message {
+  color: #23A2EA;
   font-size: 20px;
   width: 287px;
 }
 
-#city-name-date{
+#city-name-date {
   font-size: 24px;
 }
 
-#map{
+#map {
   width: 642px;
   height: 425px;
 }
-footer h3{
+
+footer h3 {
   text-align: center;
   margin-top: 150px;
   color: #777777;
   font-weight: 400;
   font-size: 20;
 }
+
+
+
+
+
+#search-results.search-results-visible {
+  background-color: #23A3EA;
+  /* ou une autre couleur de fond spécifique */
+  color: #FFFFFF;
+  padding-top: 20px;
+}
+
+.city-name {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.date {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.weather-icon {
+  margin-top: 40px;
+  width: 100px;
+  height: 100px;
+}
+
+.temperature {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.weather-info {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.windSpeed {
+  margin-bottom: 10px;
+}
+
+.precipitation {
+  margin-bottom: 10px;
+}
+
+p img {
+  width: 16px;
+
+}
+
+/* Ajoutez d'autres styles selon vos besoins */

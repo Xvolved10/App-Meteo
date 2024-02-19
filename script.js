@@ -1,6 +1,6 @@
 // Fonction pour effectuer une requête vers l'API Adresse et obtenir des suggestions de villes
 function searchAddress(input) {
-var apiUrl =
+  var apiUrl =
     "https://api-adresse.data.gouv.fr/search/?q=" + input + "&type=municipality&autocomplete=1";
 
   return fetch(apiUrl)
@@ -47,45 +47,72 @@ function displayWeather(cityName, weatherData) {
   searchResultsSection.innerHTML = ""; // Effacer les résultats précédents
 
   var cityNameDate = document.createElement("p");
-  cityNameDate.textContent =
-    "Ville: " +
+  cityNameDate.innerHTML =
+    "<span class='city-name'>" +
     cityName +
-    " | Date: " +
-    new Date(weatherData.dt * 1000).toLocaleDateString();
+    "</span> | <span class='date'>" +
+    new Date(weatherData.dt * 1000).toLocaleDateString() +
+    "</span>";
   searchResultsSection.appendChild(cityNameDate);
 
   var weatherIcon = document.createElement("img");
   weatherIcon.src =
     "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + ".png";
   weatherIcon.alt = weatherData.weather[0].description;
+  weatherIcon.classList.add("weather-icon"); // Ajoutez la classe pour l'icône météo
   searchResultsSection.appendChild(weatherIcon);
 
   var temperature = document.createElement("p");
   temperature.textContent =
     (weatherData.main.temp - 273.15).toFixed(1) + "°C";
+  temperature.classList.add("temperature"); // Ajoutez la classe pour la température
   searchResultsSection.appendChild(temperature);
 
+  // Traduction des descriptions météorologiques
+  var weatherDescriptions = {
+    "clear sky": "Ciel dégagé",
+    "few clouds": "Quelques nuages",
+    "scattered clouds": "Nuages épars",
+    "broken clouds": "Très nuageux",
+    "shower rain": "Averses",
+    "rain": "Pluie",
+    "thunderstorm": "Orage",
+    "snow": "Neige",
+    "mist": "Brume",
+    // Ajoutez d'autres descriptions selon vos besoins
+  };
+  var weatherDescription = weatherData.weather[0].description;
+  if (weatherDescriptions.hasOwnProperty(weatherDescription)) {
+    weatherDescription = weatherDescriptions[weatherDescription];
+  }
+
   var weatherType = document.createElement("p");
-  weatherType.textContent =
-    weatherData.weather[0].description;
+  weatherType.textContent =  weatherDescription;
+  weatherType.classList.add("weather-info"); // Ajoutez la classe pour le type de météo
   searchResultsSection.appendChild(weatherType);
 
   var windSpeed = document.createElement("p");
-  windSpeed.textContent =
-    "vent: " + weatherData.wind.speed + " km/h";
+  windSpeed.innerHTML =
+    "<img src='./assets/img/wind.png'>" + // Ajouter l'icône du vent
+    " Vent: " + (weatherData.wind.speed).toFixed(1) + " km/h";
+  windSpeed.classList.add("windSpeed"); // Ajoutez la classe pour la vitesse du vent
   searchResultsSection.appendChild(windSpeed);
 
   var precipitation = document.createElement("p");
-  precipitation.textContent =
-    "Précipitations: " +
+  precipitation.innerHTML =
+    "<img src='./assets/img/rain.png'>" + // Ajouter l'icône des précipitations
+    " Précipitations: " +
     (weatherData.rain && weatherData.rain["1h"]
       ? ((weatherData.rain["1h"] / 10) * 100).toFixed(1) + "%"
       : "0%");
+  precipitation.classList.add("precipitation"); // Ajoutez la classe pour les précipitations
   searchResultsSection.appendChild(precipitation);
-  
 
   var humidity = document.createElement("p");
-  humidity.textContent = "Humidité: " + weatherData.main.humidity + "%";
+  humidity.innerHTML =
+    "<img src='./assets/img/humidity.png'>" + // Ajouter l'icône de l'humidité
+    " Humidité: " + weatherData.main.humidity + "%";
+  humidity.classList.add("humidity"); // Ajoutez la classe pour l'humidité
   searchResultsSection.appendChild(humidity);
 
   // Ajout de la classe ou de l'ID à la section search-results
@@ -103,7 +130,7 @@ function displayCitySuggestions(addresses) {
     var cityName = address.properties.city;
     var postalCode = address.properties.postcode;
     var key = cityName + " - " + postalCode;
-    
+
     // Vérifier si la ville n'a pas déjà été ajoutée
     if (!uniqueCities[key]) {
       var option = document.createElement("option");
@@ -171,10 +198,10 @@ function searchAndDisplay() {
           var marker = L.marker([coordinates.lat, coordinates.lon])
             .bindPopup(
               "<b>Ville:</b> " +
-                weatherData.name +
-                "<br><b>Température:</b> " +
-                (weatherData.main.temp - 273).toFixed(1) +
-                "°C"
+              weatherData.name +
+              "<br><b>Température:</b> " +
+              (weatherData.main.temp - 273).toFixed(1) +
+              "°C"
             );
 
           // Ajout du marqueur au groupe de marqueurs
